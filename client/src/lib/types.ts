@@ -23,11 +23,20 @@ export type TrainType = {
 
 export type MessageType = {
 	text: string;
-	type: "text" | "train_list";
+	type: "text" | "train_list" | "confirmation";
 	sender: "ai" | "user";
 	trains?: TrainType[];
+	ticket?: TicketConfirmationType;
 };
 
 export type SocketStateType = {
 	socket: Socket;
+};
+
+export type TicketConfirmationType = {
+	pnr: string;
+	train_name: string;
+	boarding_time: string;
+	coach: string;
+	seat: string;
 };

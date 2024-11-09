@@ -1,17 +1,16 @@
-import MultimodalInput from "@/components/multimodal-input";
 import { Link } from "react-router-dom";
 import { IoArrowForward } from "react-icons/io5";
 
 export default function Home() {
   return (
     <main className="px-4 sm:px-0 max-w-2xl mx-auto">
-      <section className="text-center text-sm text-muted-foreground mt-10 max-w-md mx-auto">
+      <section className="text-center text-muted-foreground mt-10 mx-auto">
         This is an open source project. You can contribute to this project by
         adding more agents. Integrate your own APIs and make it more powerful.
-        Currently it supports only train booking and food ordering. You can add
-        more agents like bus booking, hotel booking, etc.
+        Currently it supports train booking. You can add more agents like bus
+        booking, hotel booking, ordering food etc.
       </section>
-      <div className="sm:w-full grid gap-2 fixed bottom-[120px] inset-x-5 sm:inset-x-auto">
+      <div className="sm:w-full grid gap-2 fixed bottom-5 inset-x-5 sm:inset-x-auto">
         <Suggestion
           text="Help me book trains from Mumbai to Pune"
           href="/chat/train-booking"
@@ -21,11 +20,11 @@ export default function Home() {
           href="/chat/pnr-status"
         />
         <Suggestion
-          text="Order Cheeze Pizza from Domino's"
-          href="/chat/order-food"
+          text="What are the trains available from Varodara to Thane"
+          href="/chat/train-booking"
         />
       </div>
-      <MultimodalInput />
+      {/* <MultimodalInput /> */}
     </main>
   );
 }
