@@ -21,12 +21,15 @@ export type TrainType = {
 	];
 };
 
+export type WidgetType = "text" | "train_list" | "confirmation" | "summary";
+
 export type MessageType = {
 	text: string;
-	type: "text" | "train_list" | "confirmation";
+	type: WidgetType;
 	sender: "ai" | "user";
 	trains?: TrainType[];
 	ticket?: TicketConfirmationType;
+	summary?: SummaryType;
 };
 
 export type SocketStateType = {
@@ -39,4 +42,21 @@ export type TicketConfirmationType = {
 	boarding_time: string;
 	coach: string;
 	seat: string;
+};
+
+export type SummaryType = {
+	trainId: string;
+	train: string;
+	from: string;
+	to: string;
+	date: string;
+	class: string;
+	totalFare: string;
+	passengers: Array<{
+		name: string;
+		age: number;
+		gender: string;
+	}>;
+	contact: string;
+	upid: string;
 };

@@ -5,7 +5,10 @@ import { io } from "socket.io-client";
 const SocketContext = createContext<SocketStateType>({} as SocketStateType);
 
 export const SocketProvider = (props: { children: React.ReactNode }) => {
-  const socket = io("https://sure-known-condor.ngrok-free.app/");
+  const socket = useMemo(
+    () => io("https://sure-known-condor.ngrok-free.app/"),
+    []
+  );
   return (
     <SocketContext.Provider value={{ socket }}>
       {props.children}

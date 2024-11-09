@@ -27,7 +27,7 @@ function Train({ train }: { train: TrainType }) {
           sender: "user",
         };
         addMessage(message);
-        socket.emit("message", message);
+        socket.emit("message", train.train_id);
       }}
     >
       <div className="gap-1 grid grid-cols-[2fr_1fr] ">

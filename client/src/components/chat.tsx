@@ -1,30 +1,49 @@
 import Message, { AIMessageWrapper } from "@/components/message";
 import Trains from "@/components/agents/train-booking/trains";
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 import { useMessagesStore } from "@/lib/store";
 import { useSocket } from "@/components/socket-provider";
-import type { TicketConfirmationType, TrainType } from "@/lib/types";
+import type {
+  SummaryType,
+  TicketConfirmationType,
+  TrainType,
+  WidgetType,
+} from "@/lib/types";
 import TicketConfirmation from "./agents/train-booking/ticket-confirmation";
+import BookingSummary from "./agents/train-booking/booking-summary";
 
 export default function Chat() {
   const { messages, addMessage } = useMessagesStore();
   const { socket } = useSocket();
+  const chatRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     function onMessageRecieved(message: {
       response: string;
       train_list?: TrainType[];
       ticket?: TicketConfirmationType;
-      type: "text" | "train_list" | "confirmation";
+      type: WidgetType;
+      summary: SummaryType;
     }) {
-      const { response, train_list, type, ticket } = message;
+      const { response, train_list, type, ticket, summary } = message;
       addMessage({
         text: response,
         trains: train_list,
         type,
         sender: "ai",
         ticket: ticket,
+        summary: summary,
       });
+
+      // Check if the user is at the bottom of the chat
+      if (chatRef.current) {
+        const { scrollTop, scrollHeight, clientHeight } = chatRef.current;
+        if (scrollTop + clientHeight >= scrollHeight) {
+          chatRef.current.scrollTop = scrollHeight; // Scroll to the bottom
+        } else {
+          chatRef.current.scrollTop = scrollHeight - clientHeight; // Scroll back up
+        }
+      }
     }
     socket.on("message", onMessageRecieved);
 
@@ -35,7 +54,7 @@ export default function Chat() {
 
   console.log(socket);
   return (
-    <section className="flex flex-col gap-4">
+    <section ref={chatRef} className="flex flex-col gap-4">
       {messages.map((msg) =>
         msg.sender === "user" ? (
           <Message
@@ -51,6 +70,9 @@ export default function Chat() {
             )}
             {msg.type === "confirmation" && msg.ticket && (
               <TicketConfirmation ticket={msg.ticket} />
+            )}
+            {msg.type === "summary" && msg.summary && (
+              <BookingSummary summary={msg.summary} />
             )}
           </AIMessageWrapper>
         )

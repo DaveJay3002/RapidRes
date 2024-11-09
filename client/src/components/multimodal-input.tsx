@@ -17,7 +17,6 @@ export default function MultimodalInput() {
 
   const [text, setText] = useState("");
   const inProgress = false;
-  const isPlaying = false;
 
   // const {
   //   transcript,

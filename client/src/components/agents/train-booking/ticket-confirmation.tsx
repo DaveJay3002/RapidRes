@@ -1,6 +1,4 @@
 import type { TicketConfirmationType } from "@/lib/types";
-import { useMessagesStore } from "@/lib/store";
-import { useSocket } from "@/components/socket-provider";
 import { Separator } from "@/components/ui/separator";
 
 export default function TicketConfirmation({
@@ -8,9 +6,6 @@ export default function TicketConfirmation({
 }: {
   ticket: TicketConfirmationType;
 }) {
-  const { addMessage } = useMessagesStore();
-  const { socket } = useSocket();
-
   return (
     <div className="w-full px-4 py-3 rounded-lg bg-muted border space-y-2">
       <div className="flex items-center justify-between">
@@ -21,7 +16,7 @@ export default function TicketConfirmation({
           </p>
         </div>
         <div className="flex flex-col gap-1 items-end">
-          <p className="w-fit font-normal text-sm px-2 py-0.5 rounded-full bg-primary ">
+          <p className="w-fit font-normal text-sm px-2 py-0.5 rounded-full bg-primary text-primary-foreground">
             {ticket.seat}
           </p>
           <p className="text-sm font-normal text-muted-foreground">

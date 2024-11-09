@@ -7,7 +7,7 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { IoTrainOutline, IoPersonCircleOutline } from "react-icons/io5";
+import { IoPersonCircleOutline } from "react-icons/io5";
 import { RiRobot2Line } from "react-icons/ri";
 import { Link } from "react-router-dom";
 import { useAuth0 } from "@auth0/auth0-react";
@@ -24,14 +24,14 @@ export default function Header() {
           <p>RapidRes</p>
         </Link>
         <div className="flex items-center gap-4 md:gap-5">
-          {user ? (
+          {signedIn ? (
             <DropdownMenu>
               <DropdownMenuTrigger>
                 <IoPersonCircleOutline className="text-secondary-foreground w-8 h-8" />
               </DropdownMenuTrigger>
               <DropdownMenuContent align="end">
                 <DropdownMenuLabel className="bg-secondary -m-1 p-2">
-                  {user.email}
+                  {user?.email}
                 </DropdownMenuLabel>
                 <DropdownMenuSeparator />
                 <DropdownMenuItem
