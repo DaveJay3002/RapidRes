@@ -1,0 +1,69 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+	* {
+		@apply border-border;
+	}
+	body {
+		@apply bg-background text-foreground;
+		font-family: "Roboto", sans-serif;
+	}
+	.horizontal-padding {
+		@apply px-4 sm:px-6 lg:px-8;
+	}
+
+	.slide-up {
+		animation: slideUp 0.5s ease forwards;
+	}
+
+	@keyframes slideUp {
+		from {
+			transform: translateY(20px);
+			opacity: 0;
+		}
+		to {
+			transform: translateY(0);
+			opacity: 1;
+		}
+	}
+}
+
+@layer base {
+	:root {
+		--background: 0 0% 4%;
+		--foreground: 0 0% 98%;
+		--card: 0 0% 4%;
+		--card-foreground: 0 0% 98%;
+		--popover: 0 0% 4%;
+		--popover-foreground: 0 0% 98%;
+		--primary: 210 100% 50%;
+		--primary-foreground: 240 5.9% 10%;
+		--secondary: 0 0% 10%;
+		--secondary-foreground: 0 0% 94%;
+		--muted: 240 3.7% 15.9%;
+		--muted-foreground: 240 5% 64.9%;
+		--accent: 240 3.7% 15.9%;
+		--accent-foreground: 0 0% 94%;
+		--destructive: 0 62.8% 30.6%;
+		--destructive-foreground: 0 0% 98%;
+		--border: 240 2% 24%;
+		--input: 240 3.7% 15.9%;
+		--ring: 211 100% 50%;
+		--chart-1: 220 70% 50%;
+		--chart-2: 160 60% 45%;
+		--chart-3: 30 80% 55%;
+		--chart-4: 280 65% 60%;
+		--chart-5: 340 75% 55%;
+		--sidebar-background: 240 5.9% 10%;
+		--sidebar-foreground: 240 4.8% 95.9%;
+		--sidebar-primary: 224.3 76.3% 48%;
+		--sidebar-primary-foreground: 0 0% 100%;
+		--sidebar-accent: 240 3.7% 15.9%;
+		--sidebar-accent-foreground: 240 4.8% 95.9%;
+		--sidebar-border: 240 3.7% 15.9%;
+		--sidebar-ring: 217.2 91.2% 59.8%;
+		--radius: 0.5rem;
+	}
+}
