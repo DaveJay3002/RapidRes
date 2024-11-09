@@ -12,8 +12,6 @@ import { RiRobot2Line } from "react-icons/ri";
 import { Link } from "react-router-dom";
 import { useAuth0 } from "@auth0/auth0-react";
 
-const signedIn = true;
-
 export default function Header() {
   const { loginWithRedirect, logout, user } = useAuth0();
   return (
@@ -24,7 +22,7 @@ export default function Header() {
           <p>RapidRes</p>
         </Link>
         <div className="flex items-center gap-4 md:gap-5">
-          {signedIn ? (
+          {user ? (
             <DropdownMenu>
               <DropdownMenuTrigger>
                 <IoPersonCircleOutline className="text-secondary-foreground w-8 h-8" />

@@ -5,7 +5,7 @@ import { useSocket } from "@/components/socket-provider";
 export default function Trains({ trains }: { trains: TrainType[] }) {
   return (
     <div className="bg-muted p-2 rounded-lg shadow-sm">
-      {trains.map((train) => (
+      {trains?.map((train) => (
         <Train train={train} key={train.train_id} />
       ))}
     </div>
@@ -46,7 +46,7 @@ function Train({ train }: { train: TrainType }) {
           </p>
         </div>
       </div>
-      <div className="w-full grid grid-cols-2">
+      <div className="w-full flex flex-wrap gap-2">
         {train.classes.map((cls) => (
           <div key={cls.class_type}>
             <p className="text-muted-foreground">{cls.class_type}</p>
