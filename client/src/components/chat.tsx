@@ -26,6 +26,7 @@ export default function Chat() {
       summary: SummaryType;
     }) {
       const { response, train_list, type, ticket, summary } = message;
+      console.log(response, train_list, type, ticket, summary);
       addMessage({
         text: response,
         trains: train_list,

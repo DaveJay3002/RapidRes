@@ -6,7 +6,7 @@ const SocketContext = createContext<SocketStateType>({} as SocketStateType);
 
 export const SocketProvider = (props: { children: React.ReactNode }) => {
   const socket = useMemo(
-    () => io("https://sure-known-condor.ngrok-free.app/"),
+    () => io("http://localhost:5000"),
     []
   );
   return (
