@@ -46,7 +46,7 @@ function Train({ train }: { train: TrainType }) {
           </p>
         </div>
       </div>
-      <div className="w-full grid grid-cols-2">
+      <div className="w-full flex flex-wrap gap-2">
         {train.classes.map((cls) => (
           <div key={cls.class_type}>
             <p className="text-muted-foreground">{cls.class_type}</p>

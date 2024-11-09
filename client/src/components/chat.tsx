@@ -56,15 +56,11 @@ export default function Chat() {
   console.log(socket);
   return (
     <section ref={chatRef} className="flex flex-col gap-4">
-      {messages.map((msg) =>
+      {messages.map((msg, index) =>
         msg.sender === "user" ? (
-          <Message
-            key={msg.text?.slice(0, 5)}
-            sender="user"
-            message={msg.text}
-          />
+          <Message key={index.toString()} sender="user" message={msg.text} />
         ) : (
-          <AIMessageWrapper key={msg.text?.slice(0, 5)}>
+          <AIMessageWrapper key={index.toString()}>
             <Message sender="ai" message={msg.text} />
             {msg.type === "train_list" && msg.trains && (
               <Trains trains={msg.trains} />
